@@ -1,0 +1,66 @@
+:root {
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --greenBG: rgba(21, 93, 39, 1);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBG: rgb(225, 225, 235);
+}
+
+.bodysection{
+    background: var(--greenBG);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .cardbody{
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--whiteColor);
+        width: 30%;
+        height: 80%;
+        border-radius: 3%;
+        -webkit-border-radius: 3%;
+        -moz-border-radius: 3%;
+        -ms-border-radius: 3%;
+        -o-border-radius: 3%;
+
+        .logo{
+            color: var(--greenBG);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .box{
+            margin-bottom: 2rem;
+        }
+
+        .btn{
+            background: var(--greenBG);
+            width: 100%;
+            margin-bottom: 2cm;
+            
+        }
+
+        .circle{
+            background-color: var(--whiteColor);
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+        }
+
+    }
+}
+
+
