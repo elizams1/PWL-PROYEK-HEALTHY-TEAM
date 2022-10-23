@@ -1,0 +1,23 @@
+@media screen and (max-width: 500px) {
+  .search-fitur{
+    width: 180px;
+    gap: 5px !important;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+
+}
+.beranda{
+  width: 100%;
+}
+.top-beranda{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.search-fitur{
+  display: flex;
+  gap: 10px;
+}
