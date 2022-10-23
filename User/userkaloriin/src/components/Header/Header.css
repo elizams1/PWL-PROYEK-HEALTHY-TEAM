@@ -24,7 +24,7 @@
   }
 }
 .the-header{ 
-  padding: 30px;
+  padding: 50px;
   background-color: #155D27;
   height: 140px;
   display: flex;
@@ -59,6 +59,7 @@
 }
 .profil-photo{
   width: 50px;
+  border-radius: 100px;
 }
 .drawer-header{
   display: flex;

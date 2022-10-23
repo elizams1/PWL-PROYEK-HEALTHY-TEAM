@@ -50,7 +50,7 @@ function Header() {
             </div>
           </Link>
           <div className="profil-photo">
-             <img className="profil-photo" src={require("../../assets/profilPhoto.png")} alt="the-plus"></img>
+             <img className="profil-photo" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@ function Header() {
               <DrawerCloseButton />
               <DrawerHeader>
                 <div className="drawer-header">
-                  <img className="profil-photo" src={require("../../assets/profilPhoto.png")} alt="the-plus"></img>
+                  <img className="profil-photo" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
                   <p>Nama Pengguna</p>
                 </div>
               </DrawerHeader>
