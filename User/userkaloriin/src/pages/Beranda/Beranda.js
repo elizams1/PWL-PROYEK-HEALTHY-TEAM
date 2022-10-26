@@ -5,7 +5,6 @@ import {
 import './Beranda.css'; 
 import {BsSearch} from 'react-icons/bs';
 function Beranda(){
-
   return(
     <div className="content">
       <div className="beranda">
