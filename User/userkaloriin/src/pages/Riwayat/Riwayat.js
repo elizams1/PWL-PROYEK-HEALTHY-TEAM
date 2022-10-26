@@ -19,11 +19,11 @@ function Riwayat(){
         <div className="top-riwayat">
           <p className="type-name-page">Riwayat</p>
           <div className="left-button">
-            <Button colorScheme='green' className="tambah-button">
+            <Button size='md' colorScheme='green' className="tambah-button">
               <p>Tambah</p>
               <BsFileEarmarkPlus/>
             </Button>
-            <Button color='#155D27' className="cetak-button">
+            <Button size='md' color='#155D27' className="cetak-button">
               <p>Cetak</p>
               <BsFileEarmarkArrowDown/>
             </Button>
