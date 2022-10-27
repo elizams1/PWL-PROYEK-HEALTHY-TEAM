@@ -1,0 +1,16 @@
+@media screen and (max-width: 500px) {
+  
+}
+
+@media screen and (max-width: 1400px) {
+
+}
+.tambah-postingan {
+  width: 100%;
+}
+.upload-postingan{
+  margin-top: 50px;
+}
+.caption-postingan{
+  margin-top: 20px;
+}

@@ -8,9 +8,9 @@ import {
   Th,
   Td,
   TableContainer,
+  Button
 } from '@chakra-ui/react';
 import { BsFileEarmarkArrowDown, BsFileEarmarkPlus } from 'react-icons/bs';
-import { Button } from '@chakra-ui/react';
 
 function Riwayat(){
   return(
