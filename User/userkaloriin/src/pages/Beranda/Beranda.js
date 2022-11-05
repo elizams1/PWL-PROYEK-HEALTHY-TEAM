@@ -18,7 +18,66 @@ function Beranda(){
           </div>
         </div>
         <div className="catalog-beranda">
-          
+          <div className="card-item">
+            <div className="card-image">
+              <img className="card-img-set" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
+            </div>
+            <div className="card-name">
+              <p className="the-card-name">Apel</p>
+            </div>
+            <div className="card-detail">
+              <p className="the-card-detail">100 gr</p>
+              <p className="the-card-detail">52 kkal</p>
+            </div>
+          </div>
+          <div className="card-item">
+            <div className="card-image">
+              <img className="card-img-set" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
+            </div>
+            <div className="card-name">
+              <p className="the-card-name">Apel</p>
+            </div>
+            <div className="card-detail">
+              <p className="the-card-detail">100 gr</p>
+              <p className="the-card-detail">52 kkal</p>
+            </div>
+          </div>
+          <div className="card-item">
+            <div className="card-image">
+              <img className="card-img-set" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
+            </div>
+            <div className="card-name">
+              <p className="the-card-name">Apel</p>
+            </div>
+            <div className="card-detail">
+              <p className="the-card-detail">100 gr</p>
+              <p className="the-card-detail">52 kkal</p>
+            </div>
+          </div>
+          <div className="card-item">
+            <div className="card-image">
+              <img className="card-img-set" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
+            </div>
+            <div className="card-name">
+              <p className="the-card-name">Apel</p>
+            </div>
+            <div className="card-detail">
+              <p className="the-card-detail">100 gr</p>
+              <p className="the-card-detail">52 kkal</p>
+            </div>
+          </div>
+          <div className="card-item">
+            <div className="card-image">
+              <img className="card-img-set" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
+            </div>
+            <div className="card-name">
+              <p className="the-card-name">Apel</p>
+            </div>
+            <div className="card-detail">
+              <p className="the-card-detail">100 gr</p>
+              <p className="the-card-detail">52 kkal</p>
+            </div>
+          </div>
         </div>
       </div>
       
