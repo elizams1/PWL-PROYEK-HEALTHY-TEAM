@@ -1,0 +1,16 @@
+@media  screen and (min-width: 768px) {
+    .footer{
+      margin-top: 40vh;
+    }
+}
+.footer{
+  background-color: #155D27;
+  padding : 25px 50px;
+}
+.footer-item{
+  display: flex;
+  justify-content: center;
+}
+.text-footer{
+  color: #fff;
+}
