@@ -1,8 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../components/auth.js";
 import './Profil.css';
 
 function Profil(){
+  const auth = useAuth();
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    auth.logout();
+    navigate('/login');
+  }
   return(
     <div className="content">
       <div className="profil">
@@ -22,7 +30,7 @@ function Profil(){
           </div>
         </div>
         <div className="logout">
-          <p className="type-logout">Keluar</p>
+          <button className="type-logout" onClick={handleLogout}>Keluar</button>
         </div>
       </div>
     </div>

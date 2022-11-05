@@ -1,5 +1,5 @@
 import React from "react";
-import './Header.css';
+import './UserHeader.css';
 import {
   Drawer,
   DrawerBody,
@@ -24,27 +24,27 @@ function Header() {
           <img className="logo" src={require("../../assets/logoPutihKaloriin.png")} alt="the-logos"></img>
         </div>
         <div className="menu">
-          <Link to="/tambah-postingan">
+          <Link to="/user/tambah-postingan">
             <div className="tambah-postingan">
               <img className="button-plus" src={require("../../assets/buttonPlus.png")} alt="the-plus"></img>
             </div>
           </Link>
-          <Link to="/beranda">
+          <Link to="/user/beranda">
             <div>
               <p className="type-menu">Beranda</p>
             </div>
           </Link>
-          <Link to="/riwayat">
+          <Link to="/user/riwayat">
             <div>
               <p className="type-menu">Riwayat</p>
             </div>
           </Link>
-          <Link to="/postingan">
+          <Link to="/user/postingan">
             <div>
               <p className="type-menu">Postingan</p>
             </div>
           </Link>
-          <Link to="/profil">
+          <Link to="/user/profil">
             <div>
               <p className="type-menu">Profil</p>
             </div>
@@ -78,27 +78,27 @@ function Header() {
                 </div>
               </DrawerHeader>
               <DrawerBody>
-                <Link to="/beranda">
+                <Link to="/user/beranda">
                   <div className="menu-drawer">
                     <p className="type-drawer">Beranda</p>
                   </div>
                 </Link>
-                <Link to="/riwayat">
+                <Link to="/user/riwayat">
                   <div className="menu-drawer">
                     <p className="type-drawer">Riwayat</p>
                   </div>
                 </Link>
-                <Link to="/postingan">
+                <Link to="/user/postingan">
                   <div className="menu-drawer">
                     <p className="type-drawer">Postingan</p>
                   </div>
                 </Link>
-                <Link to="/profil">
+                <Link to="/user/profil">
                   <div className="menu-drawer">
                     <p className="type-drawer">Profil</p>
                   </div>
                 </Link>
-                <Link to="/tambah-postingan">
+                <Link to="/user/tambah-postingan">
                   <div className="menu-drawer tambah-postingan-drawer">
                     <img className="button-plus" src={require("../../assets/buttonPlus.png")} alt="the-plus"></img>
                     <p className="type-drawer">Tambah Postingan</p>
