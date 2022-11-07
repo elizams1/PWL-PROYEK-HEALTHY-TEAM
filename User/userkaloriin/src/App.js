@@ -13,6 +13,9 @@ import Postingan from './pages/Postingan/Postingan.js';
 import Profil from './pages/Profil/Profil.js';
 import TambahPostingan from './pages/TambahPostingan/TambahPostingan.js';
 
+import TambahRiwayat from './pages/TambahRiwayat/TambahRiwayat.js';
+import UbahRiwayat from './pages/UbahRiwayat/UbahRiwayat.js';
+
 
 function App() {
   
@@ -28,6 +31,8 @@ function App() {
             <Route path="postingan" element={<Postingan/>}></Route>
             <Route path="profil" element={<Profil/>}></Route>
             <Route path="tambah-postingan" element={<TambahPostingan/>}></Route>
+            <Route path="riwayat/tambah-riwayat" element={<TambahRiwayat/>}></Route>
+            <Route path="riwayat/ubah-riwayat" element={<UbahRiwayat/>}></Route>
           </Route>
           <Route path="/admin">
              <Route path="beranda" element={<Beranda/>}></Route>

@@ -1,0 +1,14 @@
+@media screen and (max-width: 500px) {}
+
+@media screen and (max-width: 1400px) {}
+
+.ubah-riwayat {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.top-breadcumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

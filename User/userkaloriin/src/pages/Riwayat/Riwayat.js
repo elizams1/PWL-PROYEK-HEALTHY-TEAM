@@ -8,8 +8,9 @@ import {
   Th,
   Td,
   TableContainer,
-  Button
+  Button,
 } from '@chakra-ui/react';
+import { Link } from "react-router-dom";
 import { BsFileEarmarkArrowDown, BsFileEarmarkPlus } from 'react-icons/bs';
 
 function Riwayat(){
@@ -19,11 +20,13 @@ function Riwayat(){
         <div className="top-riwayat">
           <p className="type-name-page">Riwayat</p>
           <div className="left-button">
-            <Button size='md' colorScheme='green' className="tambah-button">
-              <p>Tambah</p>
-              <BsFileEarmarkPlus/>
-            </Button>
-            <Button size='md' color='#155D27' className="cetak-button">
+            <Link to="/user/riwayat/tambah-riwayat">
+              <Button size='md' colorScheme='green' className="tambah-button">
+                <p>Tambah</p>
+                <BsFileEarmarkPlus/>
+              </Button>
+            </Link>
+            <Button  size='md' color='#155D27' className="cetak-button">
               <p>Cetak</p>
               <BsFileEarmarkArrowDown/>
             </Button>
@@ -52,9 +55,11 @@ function Riwayat(){
                   <Td className="text-numeric-table" isNumeric>300</Td>
                   <Td className="text-numeric-table" isNumeric>900</Td>
                   <Th  className="button-action">
-                    <Button colorScheme='blue' size='xs'>
-                      Ubah
-                    </Button>
+                    <Link to="/user/riwayat/ubah-riwayat">
+                      <Button colorScheme='blue' size='xs'>
+                        Ubah
+                      </Button>
+                    </Link>
                     <Button colorScheme='red' size='xs'>
                       Hapus
                     </Button>
@@ -68,9 +73,11 @@ function Riwayat(){
                   <Td className="text-numeric-table" isNumeric>300</Td>
                   <Td className="text-numeric-table" isNumeric>900</Td>
                   <Th className="button-action">
-                    <Button colorScheme='blue' size='xs'>
-                      Ubah
-                    </Button>
+                    <Link to="/user/riwayat/ubah-riwayat">
+                      <Button colorScheme='blue' size='xs'>
+                        Ubah
+                      </Button>
+                    </Link>
                     <Button colorScheme='red' size='xs'>
                       Hapus
                     </Button>
@@ -84,9 +91,11 @@ function Riwayat(){
                   <Td className="text-numeric-table" isNumeric>300</Td>
                   <Td className="text-numeric-table" isNumeric>900</Td>
                   <Th className="button-action">
-                    <Button colorScheme='blue' size='xs'>
-                      Ubah
-                    </Button>
+                    <Link to="/user/riwayat/ubah-riwayat">
+                      <Button colorScheme='blue' size='xs'>
+                        Ubah
+                      </Button>
+                    </Link>
                     <Button colorScheme='red' size='xs'>
                       Hapus
                     </Button>

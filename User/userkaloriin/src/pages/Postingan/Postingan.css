@@ -1,7 +1,65 @@
-@media screen and (max-width: 500px) {}
+@media screen and (max-width: 500px) {
+  .the-post {
+    width: 100% !important;
+  }
+  .the-uname{
+    font-size: 20px!important;
+  }
+  .the-uname2, .the-capt{
+    font-size: 18px !important;
+  }
+}
 
 @media screen and (max-width: 1400px) {}
 
 .postingan {
   width: 100%;
+  margin-bottom: 50px;
+}
+.the-postingan{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.the-post{
+  width: 80%;
+  border: 1px solid #155D27;
+  border-radius: 10px;
+}
+.name-post{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.the-uname{
+  font-weight: 500;
+  font-size: 24px;
+}
+.the-uname2 {
+  font-weight: 500;
+  font-size: 20px;
+}
+.the-capt{
+  font-size: 20px;
+}
+.profil-post{
+  width:8%;
+  border-radius: 100px;
+}
+.detail-post{
+  padding:20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.trash-post{
+  display: flex;
+  justify-content:center;
+}
+.the-trash-post{
+  width:70%;
 }
