@@ -19,7 +19,6 @@ function App() {
   return (
     <ChakraProvider>
       <AuthProvider>
-        
         <Routes>
           <Route exact path="/" element={<Login/>}></Route>
           <Route path="/login" element={<Login/>}></Route>

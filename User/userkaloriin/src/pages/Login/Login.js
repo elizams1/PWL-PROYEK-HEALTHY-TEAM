@@ -6,6 +6,7 @@ import './Login.css';
 function Postingan(){
 
   const [user, setUser]=useState('');
+  const [password, setPassword]=useState('');
   const auth = useAuth();
   const navigate = useNavigate();
   //const location = useLocation();
@@ -20,16 +21,30 @@ function Postingan(){
     }else{
       navigate('/admin/beranda')
     }
+    console.log(password)
+   
   }
+
   return(
-    <div className="content">
+    <div className="content-login">
       <div className="login">
-        <p>login</p>
-          <div>
-            <label>
-              Username : <input type="text" name="username" onChange={e=>setUser(e.target.value)} value={user} />
+        <img className="" src={require("../../assets/logoKaloriin.png")} alt="the-plus"></img>
+          <div className="the-form">
+            <label className="the-label">
+              Email 
             </label>
-            <button onClick={handleLogin}>LOGIN</button>
+            <input className="the-input" type="text" name="email" 
+            placeholder="Email"
+            onChange={e=>setUser(e.target.value)} value={user} />
+          </div>
+          <div className="the-form">
+            <label className="the-label">
+              Password 
+            </label>
+            <input className="the-input" type="password" name="password"  placeholder="Password" onChange={e=>setPassword(e.target.value)} value={password} />
+          </div>
+          <div className="the-button-login">
+            <button className="btn-login" onClick={handleLogin}>LOGIN</button>
           </div>
       </div>
     </div>
