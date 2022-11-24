@@ -5,8 +5,14 @@ import {
   Textarea
 } from '@chakra-ui/react';
 import { BsFillCameraFill } from 'react-icons/bs';
+import { useNavigate } from "react-router-dom";
 
 function TambahPostingan(){
+  const navigate = useNavigate();
+
+  const handleAddPostingan = () => {
+    navigate('/user/postingan');
+  }
 
   return(
     <div className="content">
@@ -21,6 +27,9 @@ function TambahPostingan(){
         <div className="caption-postingan">
           <p className="type-detail">Caption Foto</p>
           <Textarea placeholder='Tulis caption foto'/>
+        </div>
+        <div className="button-add-postingan">
+          <button className="type-add-postingan" onClick={handleAddPostingan}>Tambah</button>
         </div>
       </div>
     </div>

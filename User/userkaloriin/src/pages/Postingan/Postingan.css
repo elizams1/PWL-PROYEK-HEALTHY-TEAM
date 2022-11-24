@@ -63,3 +63,30 @@
 .the-trash-post{
   width:70%;
 }
+.the-modal{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.type-modal{
+  text-align:center;
+  font-weight: 500;
+  font-size: 20px;
+}
+.the-button-modal{
+  margin-top: 10px;
+  display: flex;
+  justify-content:center;
+  gap: 10px;
+}
+.modal-button-yes{
+  padding: 5px 50px;
+    background-color: #155D27;
+    color: #fff;
+    border-radius: 10px;
+}
+.modal-button-no {
+  padding: 5px 50px;
+  background-color: #941B0C;
+  color: #fff;
+  border-radius: 10px;
+}
