@@ -9,7 +9,7 @@ function Postingan(){
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleDeletePostingan = (a) => {
-    console.log(alert("yes berhasil apus"));
+    console.log("yes berhasil apus");
     onClose();
   }
   return(
