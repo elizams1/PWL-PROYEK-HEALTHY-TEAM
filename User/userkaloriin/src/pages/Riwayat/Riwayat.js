@@ -9,13 +9,44 @@ import {
   Td,
   TableContainer,
   Button,
+  useDisclosure, 
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody 
 } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 import { BsFileEarmarkArrowDown, BsFileEarmarkPlus } from 'react-icons/bs';
 
 function Riwayat(){
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleDeleteRiwayat = (a) => {
+    console.log("yes berhasil apus");
+    onClose();
+  }
+
   return(
     <div className="content">
+      <div className="modal-content">
+        <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalBody>
+              <div className='the-modal'>
+                <div>
+                  <p className="type-modal">Apakah anda yakin menghapus riwayat ini ?</p>
+                </div>
+                <div className="the-button-modal">
+                  <button onClick={()=>handleDeleteRiwayat("a")} className="modal-button-yes">Iya</button>
+                  <button onClick={onClose} className="modal-button-no">Tidak</button>
+                </div>
+              </div>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </div>
+
       <div className="riwayat">
         <div className="top-riwayat">
           <p className="type-name-page">Riwayat</p>
@@ -26,10 +57,12 @@ function Riwayat(){
                 <BsFileEarmarkPlus/>
               </Button>
             </Link>
-            <Button  size='md' color='#155D27' className="cetak-button">
-              <p>Cetak</p>
-              <BsFileEarmarkArrowDown/>
-            </Button>
+            <Link to="/user/riwayat/cetak-riwayat">
+              <Button  size='md' color='#155D27' className="cetak-button">
+                <p>Cetak</p>
+                <BsFileEarmarkArrowDown/>
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="body-riwayat">
@@ -60,7 +93,7 @@ function Riwayat(){
                         Ubah
                       </Button>
                     </Link>
-                    <Button colorScheme='red' size='xs'>
+                    <Button colorScheme='red' size='xs' onClick={onOpen}>
                       Hapus
                     </Button>
                   </Th>
@@ -78,7 +111,7 @@ function Riwayat(){
                         Ubah
                       </Button>
                     </Link>
-                    <Button colorScheme='red' size='xs'>
+                    <Button colorScheme='red' size='xs' onClick={onOpen}>
                       Hapus
                     </Button>
                   </Th>
@@ -96,7 +129,7 @@ function Riwayat(){
                         Ubah
                       </Button>
                     </Link>
-                    <Button colorScheme='red' size='xs'>
+                    <Button colorScheme='red' size='xs' onClick={onOpen}>
                       Hapus
                     </Button>
                   </Th>
