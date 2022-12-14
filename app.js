@@ -27,6 +27,8 @@ app.post('/gambar', upload.single('gambar'),(req, res) =>{
     res.send('berhasil')
 })
 
+
+// --USER--
 // Create User
 app.post('/api/kalorin', (req, res) => {
     // buat variabel penampung data dan query sql
@@ -123,11 +125,12 @@ app.delete('/api/kalorin/:id', (req, res) => {
     });
 });
 
+// --KATALOG--
 // Create katalog
 app.post('/api/kalorin', (req, res) => {
     // buat variabel penampung data dan query sql
     const data = { ...req.body };
-    const querySql = `INSERT INTO katalog_data (nama, berat, kalori, gambar) VALUES ('${data.nama}', '${data.berat}', '${data.kalori}', '${data.gambar}')`;
+    const querySql = `INSERT INTO katalog_data (nama_mamin, berat, kalori, gambar) VALUES ('${data.nama_mamin}', '${data.berat}', '${data.kalori}', '${data.gambar}')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {
@@ -160,7 +163,7 @@ app.get('/api/kalorin', (req, res) => {
 // read katalog by id
 app.get('/api/kalorin', (req, res) => {
     // buat query sql
-    const querySql = `SELECT katalog_data SET nama = '${data.nama}', berat ='${data.berat}', kalori ='${data.kalori}', gambar='${data.gambar}, '  WHERE id = ${req.params.id}`;
+    const querySql = `SELECT katalog_data SET nama = '${data.nama_mamin}', berat ='${data.berat}', kalori ='${data.kalori}', gambar='${data.gambar}, '  WHERE id = ${req.params.id}`;
 
     // jalankan query
     koneksi.query(querySql, (err, rows, field) => {
@@ -180,7 +183,7 @@ app.put('/api/kalorin/:id', (req, res) => {
 
     const data = { ...req.body};
     const querySearch = `SELECT * FROM katalog_data WHERE id = ${req.params.id}`;
-    const queryUpdate = `UPDATE katalog_data SET nama = '${data.nama}', berat ='${data.berat}', kalori ='${data.kalori}', gambar='${data.gambar}, '  WHERE id = ${req.params.id}`;
+    const queryUpdate = `UPDATE katalog_data SET nama_mamin = '${data.nama_mamin}', berat ='${data.berat}', kalori ='${data.kalori}', gambar='${data.gambar}, '  WHERE id = ${req.params.id}`;
 
     // jalankan query untuk melakukan pencarian data
     koneksi.query(querySearch, req.params.id, (err, rows, field) => {
@@ -210,6 +213,175 @@ app.delete('/api/kalorin/:id', (req, res) => {
     // buat query sql untuk mencari data dan hapus
     const querySearch = `SELECT * FROM katalog_data WHERE id = ${req.params.id}`;
     const queryDelete = `DELETE FROM katalog_data WHERE id = ${req.params.id}`;
+
+    // jalankan query untuk melakukan pencarian data
+    koneksi.query(querySearch, req.params.id, (err, rows, field) => {
+        // error handling
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+
+        // jika id yang dimasukkan sesuai dengan data yang ada di db
+        if (rows.length) {
+            // jalankan query delete
+            koneksi.query(queryDelete, req.params.id, (err, rows, field) => {
+                // error handling
+                if (err) {
+                    return res.status(500).json({ message: 'Ada kesalahan', error: err });
+                }
+
+                // jika delete berhasil
+                res.status(200).json({ success: true, message: 'Berhasil hapus data!' });
+            });
+        } else {
+            return res.status(404).json({ message: 'Data tidak ditemukan!', success: false });
+        }
+    });
+});
+
+// --RIWAYAT--
+// Create Riwayat
+app.post('/api/kalorin/riwayat', (req, res) => {
+    // buat variabel penampung data dan query sql
+    const data = { ...req.body };
+    const querySql = `INSERT INTO riwayat (id, tanggal, berat_badan, nama_makan_pagi, nama_minum_pagi, kalori1, nama_makan_siang, nama_minum_siang, kalori2, 
+                        nama_makan_sore, nama_makan_sore, kalori3, kalori_total) 
+                        VALUES ('${data.id}', '${data.tanggal}', '${data.berat_badan}', '${data.nama_makan_pagi}', '${data.nama_minum_pagi}', '${data.kalori1}',
+                        '${data.nama_makan_siang}', '${data.nama_minum_siang}', '${data.kalori2}', '${data.nama_makan_sore}', '${data.nama_minum_sore}', '${data.kalori3}', '${data.kalori_total}')`;
+
+    // jalankan query
+    koneksi.query(querySql, data, (err, rows, field) => {
+        // error handling
+        if (err) {
+            return res.status(500).json({ message: 'Gagal insert data!', error: err });
+        }
+        // jika request berhasil
+        res.status(201).json({ success: true, message: 'Berhasil insert data!' });
+    });
+});
+
+// update riwayat
+app.put('/api/kalorin/riwayat/:id', (req, res) => {
+    // buat variabel penampung data dan query sql
+
+    const data = { ...req.body};
+    const querySearch = `SELECT * FROM riwayat WHERE id = ${req.params.id}`;
+    const queryUpdate = `UPDATE riwayat SET tanggal = '${data.tanggal}', berat_badan ='${data.berat_badan}',
+                        nama_makan_pagi ='${data.nama_makan_pagi}', nama_minum_pagi ='${data.nama_minum_pagi},' kalori1 ='${data.kalori1}',
+                        nama_makan_siang='${data.nama_makan_siang}, nama_minum_siang ='${data.nama_minum_siang}', kalori2 ='${data.kalori2}'
+                        nama_makan_sore='${data.nama_makan_sore}, nama_minum_sore ='${data.nama_minum_sore}', kalori3 ='${data.kalori3}', '  WHERE id = ${req.params.id}`;
+
+    // jalankan query untuk melakukan pencarian data
+    koneksi.query(querySearch, req.params.id, (err, rows, field) => {
+        //error handling
+        if (err){
+            return res.status(500).json({message: "Ada kesalahan", error: err });
+        }
+        //jika id yang dimasukkan sesuai dengan data yang ada di db
+        if (rows.length){
+            // jalankan query update
+            koneksi.query(queryUpdate, [data, req.params.id], (err ,rows, field) => {
+                //error handling
+                if (err){
+                    return res.status(500).json({message: 'Ada kesalahan', error: err});
+                }
+                //Jika update berhasil
+                res.status(200).json({success: true, message:'Berhasil update data!'});
+            });
+        } else {
+            return res.status(404).json({message: 'Data tidak ditemukan!', success :false});
+        }
+    });
+});
+
+// read riwayat
+app.get('/api/kalorin/riwayat/', (req, res) => {
+    // buat query sql
+    const querySql = 'SELECT * FROM riwayat';
+
+    // jalankan query
+    koneksi.query(querySql, (err, rows, field) => {
+        // error handling
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+
+        // jika request berhasil
+        res.status(200).json({ success: true, data: rows });
+    });
+});
+
+// delete riwayat
+app.delete('/api/kalorin/riwayat/:id', (req, res) => {
+    // buat query sql untuk mencari data dan hapus
+    const querySearch = `SELECT * FROM riwayat WHERE id = ${req.params.id}`;
+    const queryDelete = `DELETE FROM riwayat WHERE id = ${req.params.id}`;
+
+    // jalankan query untuk melakukan pencarian data
+    koneksi.query(querySearch, req.params.id, (err, rows, field) => {
+        // error handling
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+
+        // jika id yang dimasukkan sesuai dengan data yang ada di db
+        if (rows.length) {
+            // jalankan query delete
+            koneksi.query(queryDelete, req.params.id, (err, rows, field) => {
+                // error handling
+                if (err) {
+                    return res.status(500).json({ message: 'Ada kesalahan', error: err });
+                }
+
+                // jika delete berhasil
+                res.status(200).json({ success: true, message: 'Berhasil hapus data!' });
+            });
+        } else {
+            return res.status(404).json({ message: 'Data tidak ditemukan!', success: false });
+        }
+    });
+});
+
+// --POSTING--
+// Create posting
+app.post('/api/kalorin/posting/', (req, res) => {
+    // buat variabel penampung data dan query sql
+    const data = { ...req.body };
+    const querySql = `INSERT INTO posting (nama_user, konten) VALUES ('${data.nama_user}', '${data.konten}')`;
+
+    // jalankan query
+    koneksi.query(querySql, data, (err, rows, field) => {
+        // error handling
+        if (err) {
+            return res.status(500).json({ message: 'Gagal insert data!', error: err });
+        }
+        // jika request berhasil
+        res.status(201).json({ success: true, message: 'Berhasil insert data!' });
+    });
+});
+
+// read posting
+app.get('/api/kalorin/posting/', (req, res) => {
+    // buat query sql
+    const querySql = 'SELECT * FROM posting';
+
+    // jalankan query
+    koneksi.query(querySql, (err, rows, field) => {
+        // error handling
+        if (err) {
+            return res.status(500).json({ message: 'Ada kesalahan', error: err });
+        }
+
+        // jika request berhasil
+        res.status(200).json({ success: true, data: rows });
+    });
+});
+
+// delete posting
+app.delete('/api/kalorin/posting/:id', (req, res) => {
+    // buat query sql untuk mencari data dan hapus
+    const querySearch = `SELECT * FROM posting WHERE id = ${req.params.id}`;
+    const queryDelete = `DELETE FROM posting WHERE id = ${req.params.id}`;
 
     // jalankan query untuk melakukan pencarian data
     koneksi.query(querySearch, req.params.id, (err, rows, field) => {
