@@ -1,10 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { 
   Button,
   Input } from '@chakra-ui/react';
 import './Beranda.css'; 
 import {BsSearch} from 'react-icons/bs';
+import axios from 'axios';
 function Beranda(){
+  const [KatalogData,setKatalogData] =useState([]);
+
+  useEffect(()=> {
+    axios
+      .get("http://localhost:8000/data")
+      .then(function (katalog){
+        setKatalogData(katalog.data);
+        console.log(katalog.data);
+      })
+      .catch(function(error){
+        console.log(error);
+      });
+    },[]
+  );
+    
   return(
     <div className="content">
       <div className="beranda">
@@ -17,70 +33,30 @@ function Beranda(){
             {/* onClick={()=> getNewsList(null,value)}><BsSearch/ */}
           </div>
         </div>
+        
         <div className="catalog-beranda">
-          <div className="card-item">
-            <div className="card-image">
-              <img className="card-img-set" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
-            </div>
-            <div className="card-name">
-              <p className="the-card-name">Apel</p>
-            </div>
-            <div className="card-detail">
-              <p className="the-card-detail">100 gr</p>
-              <p className="the-card-detail">52 kkal</p>
-            </div>
-          </div>
-          <div className="card-item">
-            <div className="card-image">
-              <img className="card-img-set" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
-            </div>
-            <div className="card-name">
-              <p className="the-card-name">Apel</p>
-            </div>
-            <div className="card-detail">
-              <p className="the-card-detail">100 gr</p>
-              <p className="the-card-detail">52 kkal</p>
-            </div>
-          </div>
-          <div className="card-item">
-            <div className="card-image">
-              <img className="card-img-set" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
-            </div>
-            <div className="card-name">
-              <p className="the-card-name">Apel</p>
-            </div>
-            <div className="card-detail">
-              <p className="the-card-detail">100 gr</p>
-              <p className="the-card-detail">52 kkal</p>
-            </div>
-          </div>
-          <div className="card-item">
-            <div className="card-image">
-              <img className="card-img-set" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
-            </div>
-            <div className="card-name">
-              <p className="the-card-name">Apel</p>
-            </div>
-            <div className="card-detail">
-              <p className="the-card-detail">100 gr</p>
-              <p className="the-card-detail">52 kkal</p>
-            </div>
-          </div>
-          <div className="card-item">
-            <div className="card-image">
-              <img className="card-img-set" src={require("../../assets/profilPhoto.jpg")} alt="the-photos"></img>
-            </div>
-            <div className="card-name">
-              <p className="the-card-name">Apel</p>
-            </div>
-            <div className="card-detail">
-              <p className="the-card-detail">100 gr</p>
-              <p className="the-card-detail">52 kkal</p>
-            </div>
-          </div>
+        {KatalogData!=null ?
+          KatalogData.map(item => 
+            <>
+              <div className="card-item">
+                <div className="card-image">
+                  <img className="card-img-set" src={`${ item.katalog_image }`} alt="the-photos"/>
+                </div>
+                <div className="card-name">
+                  <p className="the-card-name">{item.katalog_nama}</p>
+                </div>
+                <div className="card-detail">
+                  <p className="the-card-detail">{item.katalog_porsi}</p>
+                  <p className="the-card-detail">{item.katalog_kalori}</p>
+                </div>
+              </div>
+            </>
+          ) : <>
+            <p>DATA TIDAK ADA</p>
+          </>
+        }
         </div>
       </div>
-      
     </div>
   );
 }
