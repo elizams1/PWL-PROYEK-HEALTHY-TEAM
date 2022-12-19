@@ -33,7 +33,7 @@ function Header() {
               <p className="type-menu">Makanan</p>
             </div>
           </Link>
-          <Link to="/">
+          <Link to="/admin/pengguna">
             <div>
               <p className="type-menu">Pengguna</p>
             </div>
@@ -82,7 +82,7 @@ function Header() {
                     <p className="type-drawer">Makanan</p>
                   </div>
                 </Link>
-                <Link to="/">
+                <Link to="/admin/pengguna">
                   <div className="menu-drawer">
                     <p className="type-drawer">Pengguna</p>
                   </div>

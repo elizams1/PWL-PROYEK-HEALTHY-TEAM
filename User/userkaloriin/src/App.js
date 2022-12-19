@@ -21,6 +21,7 @@ import CetakRiwayat from './pages/CetakRiwayat/CetakRiwayat.js';
 //ADMIN 
 import Makanan from './pages/Makanan/Makanan.js';
 import ProfilAdmin from './pages/ProfilAdmin/ProfilAdmin.js';
+import Pengguna from './pages/Pengguna/Pengguna.js';
 
 function App() {
   
@@ -44,6 +45,7 @@ function App() {
              <Route path="beranda" element={<Beranda/>}></Route>
              <Route path="makanan" element={<Makanan/>}></Route>
              <Route path="profil" element={<ProfilAdmin/>}></Route>
+             <Route path="pengguna" element={<Pengguna/>}></Route>
           </Route>
         </Routes>
         
