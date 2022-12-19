@@ -10,10 +10,10 @@ function Beranda(){
 
   useEffect(()=> {
     axios
-      .get("http://localhost:8000/data")
+      .get("http://localhost:3000/data")
       .then(function (katalog){
-        setKatalogData(katalog.data);
-        console.log(katalog.data);
+        setKatalogData(katalog.data.katalog);
+        console.log(katalog.data.katalog);
       })
       .catch(function(error){
         console.log(error);
@@ -40,13 +40,13 @@ function Beranda(){
             <>
               <div className="card-item">
                 <div className="card-image">
-                  <img className="card-img-set" src={`${ item.katalog_image }`} alt="the-photos"/>
+                  <img className="card-img-set" src={`${ item.katalog_gambar }`} alt="the-photos"/>
                 </div>
                 <div className="card-name">
                   <p className="the-card-name">{item.katalog_nama}</p>
                 </div>
                 <div className="card-detail">
-                  <p className="the-card-detail">{item.katalog_porsi}</p>
+                  <p className="the-card-detail">{item.katalog_berat}</p>
                   <p className="the-card-detail">{item.katalog_kalori}</p>
                 </div>
               </div>
