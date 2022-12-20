@@ -22,7 +22,9 @@ import CetakRiwayat from './pages/CetakRiwayat/CetakRiwayat.js';
 import Makanan from './pages/Makanan/Makanan.js';
 import ProfilAdmin from './pages/ProfilAdmin/ProfilAdmin.js';
 import Pengguna from './pages/Pengguna/Pengguna.js';
-import TambahMakanan from './pages/TambahMakanan/TambahMakanan';
+import TambahMakanan from './pages/TambahMakanan/TambahMakanan.js';
+import UbahMakanan from './pages/UbahMakanan/UbahMakanan.js';
+import CetakMakanan from './pages/CetakMakanan/CetakMakanan.js';
 
 function App() {
   
@@ -48,6 +50,8 @@ function App() {
             <Route path="profil" element={<ProfilAdmin/>}></Route>
             <Route path="pengguna" element={<Pengguna/>}></Route>
             <Route path="makanan/tambah-makanan" element={<TambahMakanan/>}></Route>
+            <Route path="makanan/ubah-makanan" element={<UbahMakanan/>}></Route>
+            <Route path="makanan/cetak-makanan" element={<CetakMakanan/>}></Route>
           </Route>
         </Routes>
         

@@ -72,7 +72,7 @@ function Makanan(){
                 <BsFileEarmarkPlus/>
               </Button>
             </Link>
-            <Link to="/user/riwayat/cetak-riwayat">
+            <Link to="/admin/makanan/cetak-makanan">
               <Button  size='md' color='#155D27' className="cetak-button">
                 <p>Cetak</p>
                 <BsFileEarmarkArrowDown/>
@@ -101,7 +101,7 @@ function Makanan(){
                   <Td textAlign="center">{item.katalog_berat}</Td>
                   <Td textAlign="center">{item.katalog_kalori}</Td>
                   <Th  className="button-action">
-                    <Link to="/admin/beranda">
+                    <Link to="/admin/makanan/ubah-makanan">
                       <Button colorScheme='blue' size='xs'>
                         Ubah
                       </Button>
@@ -113,9 +113,7 @@ function Makanan(){
                 </Tr>
               ) :
               <p>Data tidak ada</p>
-
               }
-                
               </Tbody>
             </Table>
           </TableContainer>
