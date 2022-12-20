@@ -107,7 +107,7 @@ function Pengguna(){
                     <Td textAlign="center">{item.email}</Td>
                     <Td className="text-numeric-table" isNumeric>{item.phone}</Td>
                     <Th  className="button-action">
-                      <Link to="/admin">
+                      <Link to="/admin/pengguna/ubah-pengguna">
                         <Button colorScheme='blue' size='xs'>
                           Ubah
                         </Button>

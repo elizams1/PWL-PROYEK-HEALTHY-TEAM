@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import {BsSlashLg} from 'react-icons/bs';
 import { useNavigate } from "react-router-dom";
 
-function UbahMakanan(){
+function UbahPengguna(){
   const [nama,setNama] =useState('');
-  const [berat,setBerat] = useState('');
-  const [kalori,setKalori] = useState('');
+  const [email,setEmail] = useState('');
+  const [kontak,setKontak] = useState('');
+  const [role,setRole] = useState('');
   const [gambar,setGambar] = useState(null);
 
   const navigate = useNavigate();
@@ -14,48 +15,59 @@ function UbahMakanan(){
   const handleTambah = () =>{
     const value = {
       'nama' : nama,
-      'berat' : berat,
-      'kalori' : kalori,
-      'gambar' : gambar, 
+      'email' : email,
+      'kontak' : kontak,
+      'role': role,
+      'gambar' : gambar
     }
     console.log(value);
-    navigate('/admin/makanan');
+    navigate('/admin/pengguna');
   }
 
   return (
     <div className="content">
-      <div className="ubah-riwayat">
+      <div className="tambah-riwayat">
         <div className="top-breadcumb">
           <div>
-            <Link to="/admin/makanan"> 
-            <p className="type-name-page">Makanan</p>
+            <Link to="/admin/pengguna"> 
+            <p className="type-name-page">Pengguna</p>
           </Link>
           </div>
           <div>
             <BsSlashLg/>
           </div>
           <div>
-            <p className="type-name-page">Ubah Makanan</p>
+            <p className="type-name-page">Ubah Pengguna</p>
           </div>
         </div>
         <div className="main-content">
           <div className="the-form">
             <label className="the-label-riwayat">
-              Nama Makanan 
+              Nama Pengguna 
             </label>
-            <input className="the-input-riwayat" type="text" name="nama"  placeholder="Masukkan Nama makanan" value={nama} onChange={e=>setNama(e.target.value)}/>
+            <input className="the-input-riwayat" type="text" name="nama"  placeholder="Masukkan Nama Pengguna" value={nama} onChange={e=>setNama(e.target.value)}/>
           </div>
           <div className="the-form">
             <label className="the-label-riwayat">
-              Porsi Makanan 
+              Email
             </label>
-            <input className="the-input-riwayat" type="text" name="berat"  placeholder="Masukkan Porsi Makanan" value={berat} onChange={e=>setBerat(e.target.value)}/>
+            <input className="the-input-riwayat" type="text" name="email"  placeholder="Masukkan Email Pengguna" value={email} onChange={e=>setEmail(e.target.value)}/>
           </div>
           <div className="the-form">
             <label className="the-label-riwayat">
-              Kalori Makanan
+              Kontak Pengguna
             </label>
-            <input className="the-input-riwayat" type="text" name="kalori"  placeholder="Masukkan Kalori Makanan" value={kalori} onChange={e=>setKalori(e.target.value)} />
+            <input className="the-input-riwayat" type="number" name="kontak"  placeholder="Masukkan Kalori Makanan" value={kontak} onChange={e=>setKontak(e.target.value)}/>
+          </div>
+          <div className="the-form">
+            <label className="the-label-riwayat">
+              Role Pengguna
+            </label>
+            <select className="the-input-riwayat" onChange={e=>setRole(e.target.value)}>
+              <option selected value="">Pilih Role</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+            </select>
           </div>
           <div className="the-form">
             <label className="the-label-riwayat">
@@ -66,10 +78,10 @@ function UbahMakanan(){
         </div>
         <div className="button-add-postingan">
           <button className="type-add-postingan" onClick={handleTambah}>Simpan</button>
-        </div>  
+        </div>
       </div>
     </div>
   )
 }
 
-export default UbahMakanan;
+export default UbahPengguna;

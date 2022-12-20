@@ -26,6 +26,7 @@ import TambahMakanan from './pages/TambahMakanan/TambahMakanan.js';
 import UbahMakanan from './pages/UbahMakanan/UbahMakanan.js';
 import CetakMakanan from './pages/CetakMakanan/CetakMakanan.js';
 import TambahPengguna from './pages/TambahPengguna/TambahPengguna.js';
+import UbahPengguna from './pages/UbahPengguna/UbahPengguna.js';
 
 function App() {
   
@@ -54,9 +55,9 @@ function App() {
             <Route path="makanan/ubah-makanan" element={<UbahMakanan/>}></Route>
             <Route path="makanan/cetak-makanan" element={<CetakMakanan/>}></Route>
             <Route path="pengguna/tambah-pengguna" element={<TambahPengguna/>}></Route>
+            <Route path="pengguna/ubah-pengguna" element={<UbahPengguna/>}></Route>
           </Route>
         </Routes>
-        
       </AuthProvider>    
     </ChakraProvider>
   );
