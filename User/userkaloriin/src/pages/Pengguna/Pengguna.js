@@ -78,7 +78,7 @@ function Pengguna(){
                 <BsFileEarmarkPlus/>
               </Button>
             </Link>
-            <Link to="/admin">
+            <Link to="/admin/pengguna/cetak-pengguna">
               <Button  size='md' color='#155D27' className="cetak-button">
                 <p>Cetak</p>
                 <BsFileEarmarkArrowDown/>

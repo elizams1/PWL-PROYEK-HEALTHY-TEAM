@@ -27,6 +27,7 @@ import UbahMakanan from './pages/UbahMakanan/UbahMakanan.js';
 import CetakMakanan from './pages/CetakMakanan/CetakMakanan.js';
 import TambahPengguna from './pages/TambahPengguna/TambahPengguna.js';
 import UbahPengguna from './pages/UbahPengguna/UbahPengguna.js';
+import CetakPengguna from './pages/CetakPengguna/CetakPengguna.js';
 
 function App() {
   
@@ -56,6 +57,7 @@ function App() {
             <Route path="makanan/cetak-makanan" element={<CetakMakanan/>}></Route>
             <Route path="pengguna/tambah-pengguna" element={<TambahPengguna/>}></Route>
             <Route path="pengguna/ubah-pengguna" element={<UbahPengguna/>}></Route>
+            <Route path="pengguna/cetak-pengguna" element={<CetakPengguna/>}></Route>
           </Route>
         </Routes>
       </AuthProvider>    
