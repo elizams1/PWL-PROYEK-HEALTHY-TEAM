@@ -25,6 +25,7 @@ import Pengguna from './pages/Pengguna/Pengguna.js';
 import TambahMakanan from './pages/TambahMakanan/TambahMakanan.js';
 import UbahMakanan from './pages/UbahMakanan/UbahMakanan.js';
 import CetakMakanan from './pages/CetakMakanan/CetakMakanan.js';
+import TambahPengguna from './pages/TambahPengguna/TambahPengguna.js';
 
 function App() {
   
@@ -52,6 +53,7 @@ function App() {
             <Route path="makanan/tambah-makanan" element={<TambahMakanan/>}></Route>
             <Route path="makanan/ubah-makanan" element={<UbahMakanan/>}></Route>
             <Route path="makanan/cetak-makanan" element={<CetakMakanan/>}></Route>
+            <Route path="pengguna/tambah-pengguna" element={<TambahPengguna/>}></Route>
           </Route>
         </Routes>
         

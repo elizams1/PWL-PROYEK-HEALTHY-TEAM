@@ -72,7 +72,7 @@ function Pengguna(){
         <div className="top-riwayat">
           <p className="type-name-page">Pengguna</p>
           <div className="left-button">
-            <Link to="/admin">
+            <Link to="/admin/pengguna/tambah-pengguna">
               <Button size='md' colorScheme='green' className="tambah-button">
                 <p>Tambah</p>
                 <BsFileEarmarkPlus/>
