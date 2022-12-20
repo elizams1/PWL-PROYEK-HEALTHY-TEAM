@@ -8,7 +8,7 @@ import axios from 'axios';
 function Beranda(){
   const [KatalogData,setKatalogData] =useState([]);
   const [value, setValue] = useState('');
-  const [dataSearch, setDataSearch] = useState([KatalogData]);
+  const [dataSearch, setDataSearch] = useState(KatalogData);
 
   useEffect(()=> {
     axios
@@ -40,8 +40,8 @@ function Beranda(){
   function handleSearch(event) {
    setValue(event.target.value);
   };
-
-  
+  console.log(KatalogData)
+  console.log(dataSearch);
   return(
     <div className="content">
       <div className="beranda">
@@ -54,7 +54,7 @@ function Beranda(){
         </div>
         
         <div className="catalog-beranda">
-        {dataSearch!=null ?
+        {dataSearch.length!==0 ?
           dataSearch.map(item => 
             <>
               <div className="card-item">
@@ -70,8 +70,26 @@ function Beranda(){
                 </div>
               </div>
             </>
-          ) : <>
-            <p>DATA TIDAK ADA</p>
+          ) : 
+          <>
+            {
+              KatalogData.map(item => 
+              <>
+                <div className="card-item">
+                  <div className="card-image">
+                    <img className="card-img-set" src={`${ item.katalog_gambar }`} alt="the-photos"/>
+                  </div>
+                  <div className="card-name">
+                    <p className="the-card-name">{item.katalog_nama}</p>
+                  </div>
+                  <div className="card-detail">
+                    <p className="the-card-detail">{item.katalog_berat}</p>
+                    <p className="the-card-detail">{item.katalog_kalori}</p>
+                  </div>
+                </div>
+              </>
+            )
+            }
           </>
         }
         </div>
