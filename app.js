@@ -26,14 +26,18 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.post('/gambar', upload.single('gambar'),(req, res) =>{
     res.send('berhasil')
 })
-
+// upload gambar
+app.post('/gambar1', upload.single('posting'),(req, res) =>{
+    res.send('berhasil')
+})
 
 // --USER--
 // Create User
-app.post('/api/kalorin', (req, res) => {
+app.post('/user', (req, res) => {
     // buat variabel penampung data dan query sql
     const data = { ...req.body };
-    const querySql = `INSERT INTO user (nama, email, password, phone, role) VALUES ('${data.nama}', '${data.email}', '${data.password}', '${data.phone}', '${data.role}')`;
+    const querySql = `INSERT INTO user (id, nama, email, password, phone, role) 
+                    VALUES('${data.id}', '${data.nama}', '${data.email}', '${data.password}', '${data.phone}', '${data.role}')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {
@@ -47,7 +51,7 @@ app.post('/api/kalorin', (req, res) => {
 });
 
 // read user
-app.get('/api/kalorin', (req, res) => {
+app.get('/user', (req, res) => {
     // buat query sql
     const querySql = 'SELECT * FROM user';
 
@@ -64,12 +68,13 @@ app.get('/api/kalorin', (req, res) => {
 });
 
 // update user
-app.put('/api/kalorin/:id', (req, res) => {
+app.put('/user/:id', (req, res) => {
     // buat variabel penampung data dan query sql
     console.log(req.data)
     const data = { ...req.body};
     const querySearch = `SELECT * FROM user WHERE id = ${req.params.id}`;
-    const queryUpdate = `UPDATE user SET nama = '${data.nama}', email ='${data.email}', password ='${data.password}', phone='${data.phone}, role ='${data.role}', WHERE id = ${req.params.id}`;
+    const queryUpdate = `UPDATE user SET nama = '${data.nama}', email ='${data.email}', password ='${data.password}',
+                        phone='${data.phone}, role ='${data.role}', WHERE id = ${req.params.id}`;
 
     // jalankan query untuk melakukan pencarian data
     koneksi.query(querySearch, req.params.id, (err, rows, field) => {
@@ -95,7 +100,7 @@ app.put('/api/kalorin/:id', (req, res) => {
 });
 
 // delete user
-app.delete('/api/kalorin/:id', (req, res) => {
+app.delete('/user/:id', (req, res) => {
     // buat query sql untuk mencari data dan hapus
     const querySearch = `SELECT * FROM user WHERE id = ${req.params.id}`;
     const queryDelete = `DELETE FROM user WHERE id = ${req.params.id}`;
@@ -127,10 +132,11 @@ app.delete('/api/kalorin/:id', (req, res) => {
 
 // --KATALOG--
 // Create katalog
-app.post('/api/kalorin', (req, res) => {
+app.post('/katalog_data', (req, res) => {
     // buat variabel penampung data dan query sql
     const data = { ...req.body };
-    const querySql = `INSERT INTO katalog_data (nama_mamin, berat, kalori, gambar) VALUES ('${data.nama_mamin}', '${data.berat}', '${data.kalori}', '${data.gambar}')`;
+    const querySql = `INSERT INTO katalog_data (id, nama_mamin, berat, kalori, gambar) 
+                    VALUES ('${data.id}', '${data.nama_mamin}', '${data.berat}', '${data.kalori}', '${data.gambar}')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {
@@ -144,7 +150,7 @@ app.post('/api/kalorin', (req, res) => {
 });
 
 // read katalog
-app.get('/api/kalorin', (req, res) => {
+app.get('/katalog_data', (req, res) => {
     // buat query sql
     const querySql = 'SELECT * FROM katalog_data';
 
@@ -161,9 +167,10 @@ app.get('/api/kalorin', (req, res) => {
 });
 
 // read katalog by id
-app.get('/api/kalorin', (req, res) => {
+app.get('/katalog_data/:id', (req, res) => {
     // buat query sql
-    const querySql = `SELECT katalog_data SET nama = '${data.nama_mamin}', berat ='${data.berat}', kalori ='${data.kalori}', gambar='${data.gambar}, '  WHERE id = ${req.params.id}`;
+    const querySql = `SELECT katalog_data SET nama = '${data.nama_mamin}', berat ='${data.berat}',
+                    kalori ='${data.kalori}',gambar='${data.gambar}, '  WHERE id = ${req.params.id}`;
 
     // jalankan query
     koneksi.query(querySql, (err, rows, field) => {
@@ -178,12 +185,13 @@ app.get('/api/kalorin', (req, res) => {
 });
 
 // update katalog
-app.put('/api/kalorin/:id', (req, res) => {
+app.put('/katalog_data/:id', (req, res) => {
     // buat variabel penampung data dan query sql
 
     const data = { ...req.body};
     const querySearch = `SELECT * FROM katalog_data WHERE id = ${req.params.id}`;
-    const queryUpdate = `UPDATE katalog_data SET nama_mamin = '${data.nama_mamin}', berat ='${data.berat}', kalori ='${data.kalori}', gambar='${data.gambar}, '  WHERE id = ${req.params.id}`;
+    const queryUpdate = `UPDATE katalog_data SET nama_mamin = '${data.nama_mamin}', berat ='${data.berat}',
+                        kalori ='${data.kalori}', gambar='${data.gambar},' WHERE id = ${req.params.id}`;
 
     // jalankan query untuk melakukan pencarian data
     koneksi.query(querySearch, req.params.id, (err, rows, field) => {
@@ -209,7 +217,7 @@ app.put('/api/kalorin/:id', (req, res) => {
 });
 
 // delete katalog
-app.delete('/api/kalorin/:id', (req, res) => {
+app.delete('/katalog_data/:id', (req, res) => {
     // buat query sql untuk mencari data dan hapus
     const querySearch = `SELECT * FROM katalog_data WHERE id = ${req.params.id}`;
     const queryDelete = `DELETE FROM katalog_data WHERE id = ${req.params.id}`;
@@ -241,13 +249,14 @@ app.delete('/api/kalorin/:id', (req, res) => {
 
 // --RIWAYAT--
 // Create Riwayat
-app.post('/api/kalorin/riwayat', (req, res) => {
+app.post('/riwayat', (req, res) => {
     // buat variabel penampung data dan query sql
     const data = { ...req.body };
     const querySql = `INSERT INTO riwayat (id, tanggal, berat_badan, nama_makan_pagi, nama_minum_pagi, kalori1, nama_makan_siang, nama_minum_siang, kalori2, 
-                        nama_makan_sore, nama_makan_sore, kalori3, kalori_total) 
-                        VALUES ('${data.id}', '${data.tanggal}', '${data.berat_badan}', '${data.nama_makan_pagi}', '${data.nama_minum_pagi}', '${data.kalori1}',
-                        '${data.nama_makan_siang}', '${data.nama_minum_siang}', '${data.kalori2}', '${data.nama_makan_sore}', '${data.nama_minum_sore}', '${data.kalori3}', '${data.kalori_total}')`;
+                        nama_makan_sore, nama_makan_sore, kalori3, kalori_total) VALUES ('${data.id}', '${data.tanggal}',
+                        '${data.berat_badan}', '${data.nama_makan_pagi}', '${data.nama_minum_pagi}', '${data.kalori1}',
+                        '${data.nama_makan_siang}', '${data.nama_minum_siang}', '${data.kalori2}',
+                        '${data.nama_makan_sore}', '${data.nama_minum_sore}', '${data.kalori3}', '${data.kalori_total}')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {
@@ -261,7 +270,7 @@ app.post('/api/kalorin/riwayat', (req, res) => {
 });
 
 // update riwayat
-app.put('/api/kalorin/riwayat/:id', (req, res) => {
+app.put('/riwayat/:id', (req, res) => {
     // buat variabel penampung data dan query sql
 
     const data = { ...req.body};
@@ -295,7 +304,7 @@ app.put('/api/kalorin/riwayat/:id', (req, res) => {
 });
 
 // read riwayat
-app.get('/api/kalorin/riwayat/', (req, res) => {
+app.get('/riwayat', (req, res) => {
     // buat query sql
     const querySql = 'SELECT * FROM riwayat';
 
@@ -312,7 +321,7 @@ app.get('/api/kalorin/riwayat/', (req, res) => {
 });
 
 // delete riwayat
-app.delete('/api/kalorin/riwayat/:id', (req, res) => {
+app.delete('/riwayat/:id', (req, res) => {
     // buat query sql untuk mencari data dan hapus
     const querySearch = `SELECT * FROM riwayat WHERE id = ${req.params.id}`;
     const queryDelete = `DELETE FROM riwayat WHERE id = ${req.params.id}`;
@@ -344,10 +353,10 @@ app.delete('/api/kalorin/riwayat/:id', (req, res) => {
 
 // --POSTING--
 // Create posting
-app.post('/api/kalorin/posting/', (req, res) => {
+app.post('/posting', (req, res) => {
     // buat variabel penampung data dan query sql
     const data = { ...req.body };
-    const querySql = `INSERT INTO posting (nama_user, konten) VALUES ('${data.nama_user}', '${data.konten}')`;
+    const querySql = `INSERT INTO posting (id, nama_user, konten) VALUES ('${data.id}, ${data.nama_user}', '${data.konten}')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {
@@ -361,7 +370,7 @@ app.post('/api/kalorin/posting/', (req, res) => {
 });
 
 // read posting
-app.get('/api/kalorin/posting/', (req, res) => {
+app.get('/posting', (req, res) => {
     // buat query sql
     const querySql = 'SELECT * FROM posting';
 
@@ -378,7 +387,7 @@ app.get('/api/kalorin/posting/', (req, res) => {
 });
 
 // delete posting
-app.delete('/api/kalorin/posting/:id', (req, res) => {
+app.delete('/api/posting/:id', (req, res) => {
     // buat query sql untuk mencari data dan hapus
     const querySearch = `SELECT * FROM posting WHERE id = ${req.params.id}`;
     const queryDelete = `DELETE FROM posting WHERE id = ${req.params.id}`;
