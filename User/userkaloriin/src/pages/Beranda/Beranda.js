@@ -7,6 +7,8 @@ import {BsSearch} from 'react-icons/bs';
 import axios from 'axios';
 function Beranda(){
   const [KatalogData,setKatalogData] =useState([]);
+  const [value, setValue] = useState('');
+  const [dataSearch, setDataSearch] = useState([KatalogData]);
 
   useEffect(()=> {
     axios
@@ -20,23 +22,40 @@ function Beranda(){
       });
     },[]
   );
-    
+   
+  function filterBySearch(value) {
+    // Access input value
+    const query = value;
+    console.log(query);
+    // Create copy of item list
+    var updatedList = [...KatalogData];
+    // Include all elements which includes the search query
+    updatedList = updatedList.filter((item) => {
+      return item.katalog_nama.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+    });
+    // Trigger render with updated values
+    setDataSearch(updatedList);
+  }; 
+
+  function handleSearch(event) {
+   setValue(event.target.value);
+  };
+
+  
   return(
     <div className="content">
       <div className="beranda">
         <div className="top-beranda">
           <p className="type-name-page">Beranda</p>
           <div className="search-fitur">
-            <Input fontSize="xs" placeholder="Cari Makanan Minuman" focusBorderColor='darkgreen' />
-            {/* value={value} onChange={} */}
-              <Button size='md' color='#155D27' ><BsSearch/></Button>
-            {/* onClick={()=> getNewsList(null,value)}><BsSearch/ */}
+            <Input fontSize="xs" placeholder="Cari Makanan Minuman" focusBorderColor='darkgreen' value={value} onChange={handleSearch} />
+              <Button size='md' color='#155D27' onClick={()=> filterBySearch(value)}><BsSearch/></Button>
           </div>
         </div>
         
         <div className="catalog-beranda">
-        {KatalogData!=null ?
-          KatalogData.map(item => 
+        {dataSearch!=null ?
+          dataSearch.map(item => 
             <>
               <div className="card-item">
                 <div className="card-image">
