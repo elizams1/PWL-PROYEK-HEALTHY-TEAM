@@ -22,6 +22,7 @@ import CetakRiwayat from './pages/CetakRiwayat/CetakRiwayat.js';
 import Makanan from './pages/Makanan/Makanan.js';
 import ProfilAdmin from './pages/ProfilAdmin/ProfilAdmin.js';
 import Pengguna from './pages/Pengguna/Pengguna.js';
+import TambahMakanan from './pages/TambahMakanan/TambahMakanan';
 
 function App() {
   
@@ -42,10 +43,11 @@ function App() {
             <Route path="riwayat/cetak-riwayat" element={<CetakRiwayat/>}></Route>
           </Route>
           <Route path="/admin" element={<AdminLayout/>}>
-             <Route path="beranda" element={<Beranda/>}></Route>
-             <Route path="makanan" element={<Makanan/>}></Route>
-             <Route path="profil" element={<ProfilAdmin/>}></Route>
-             <Route path="pengguna" element={<Pengguna/>}></Route>
+            <Route path="beranda" element={<Beranda/>}></Route>
+            <Route path="makanan" element={<Makanan/>}></Route>
+            <Route path="profil" element={<ProfilAdmin/>}></Route>
+            <Route path="pengguna" element={<Pengguna/>}></Route>
+            <Route path="makanan/tambah-makanan" element={<TambahMakanan/>}></Route>
           </Route>
         </Routes>
         
