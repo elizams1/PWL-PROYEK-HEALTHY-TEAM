@@ -16,7 +16,7 @@ var storage = multer.diskStorage({
 })
 
 const upload = multer({ storage: storage });
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3306;
 
 // set body parser
 app.use(bodyParser.json());
@@ -29,8 +29,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.post('/user', (req, res) => {
     // buat variabel penampung data dan query sql
     const data = { ...req.body };
-    const querySql = `INSERT INTO user (id, nama, email, password, phone, role) 
-                    VALUES('${data.id}', '${data.nama}', '${data.email}', '${data.password}', '${data.phone}', '${data.role}')`;
+    const querySql = `INSERT INTO user (idUser, namaUser, email, password, phone, role) 
+                    VALUES('${data.idUser}', '${data.namaUser}', '${data.email}', '${data.password}', '${data.phone}', '${data.role}')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {
@@ -61,16 +61,16 @@ app.get('/user', (req, res) => {
 });
 
 // update user
-app.put('/user/:id', (req, res) => {
+app.put('/user/:idUser', (req, res) => {
     // buat variabel penampung data dan query sql
     console.log(req.data)
     const data = { ...req.body};
-    const querySearch = `SELECT * FROM user WHERE id = ${req.params.id}`;
-    const queryUpdate = `UPDATE user SET nama = '${data.nama}', email ='${data.email}', password ='${data.password}',
-                        phone='${data.phone}, role ='${data.role}', WHERE id = ${req.params.id}`;
+    const querySearch = `SELECT * FROM user WHERE idUser = ${req.params.idUser}`;
+    const queryUpdate = `UPDATE user SET namaUser = '${data.namaUser}', email ='${data.email}', password ='${data.password}',
+                        phone='${data.phone}, role ='${data.role}', WHERE idUser = ${req.params.idUser}`;
 
     // jalankan query untuk melakukan pencarian data
-    koneksi.query(querySearch, req.params.id, (err, rows, field) => {
+    koneksi.query(querySearch, req.params.idUser, (err, rows, field) => {
         //error handling
         if (err){
             return res.status(500).json({message: "Ada kesalahan", error: err });
@@ -78,7 +78,7 @@ app.put('/user/:id', (req, res) => {
         //jika id yang dimasukkan sesuai dengan data yang ada di db
         if (rows.length){
             // jalankan query update
-            koneksi.query(queryUpdate, [data, req.params.id], (err ,rows, field) => {
+            koneksi.query(queryUpdate, [data, req.params.idUser], (err ,rows, field) => {
                 //error handling
                 if (err){
                     return res.status(500).json({message: 'Ada kesalahan', error: err});
@@ -93,10 +93,10 @@ app.put('/user/:id', (req, res) => {
 });
 
 // delete user
-app.delete('/user/:id', (req, res) => {
+app.delete('/user/:idUser', (req, res) => {
     // buat query sql untuk mencari data dan hapus
-    const querySearch = `SELECT * FROM user WHERE id = ${req.params.id}`;
-    const queryDelete = `DELETE FROM user WHERE id = ${req.params.id}`;
+    const querySearch = `SELECT * FROM user WHERE idUser = ${req.params.idUser}`;
+    const queryDelete = `DELETE FROM user WHERE idUser = ${req.params.idUser}`;
 
     // jalankan query untuk melakukan pencarian data
     koneksi.query(querySearch, req.params.id, (err, rows, field) => {
@@ -125,12 +125,12 @@ app.delete('/user/:id', (req, res) => {
 
 // --KATALOG--
 // Create katalog
-app.post('/katalog_data',upload.single('gambar'), (req, res) => {
+app.post('/datakatalog',upload.single('gambar'), (req, res) => {
     // buat variabel penampung data dan query sql
     console.log(req.file.filename)
     const data = { ...req.body };
-    const querySql = `INSERT INTO katalog_data (id, nama_mamin, berat, kalori, gambar) 
-                    VALUES ('${data.id}', '${data.nama_mamin}', '${data.berat}', '${data.kalori}', '${req.file.filename}')`;
+    const querySql = `INSERT INTO datakatalog (id, namaKatalog, berat, kalori, gambar) 
+                    VALUES ('${data.idKatalog}', '${data.namaKatalog}', '${data.berat}', '${data.kalori}', '${req.file.filename}')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {
@@ -144,9 +144,9 @@ app.post('/katalog_data',upload.single('gambar'), (req, res) => {
 });
 
 // read katalog
-app.get('/katalog_data', (req, res) => {
+app.get('/dataKatalog', (req, res) => {
     // buat query sql
-    const querySql = 'SELECT * FROM katalog_data';
+    const querySql = 'SELECT * FROM datakatalog';
 
     // jalankan query
     koneksi.query(querySql, (err, rows, field) => {
@@ -161,10 +161,10 @@ app.get('/katalog_data', (req, res) => {
 });
 
 // read katalog by id
-app.get('/katalog_data/:id', (req, res) => {
+app.get('/datakatalog/:idKatalog', (req, res) => {
     // buat query sql
-    const querySql = `SELECT katalog_data SET nama = '${data.nama_mamin}', berat ='${data.berat}',
-                    kalori ='${data.kalori}',gambar='${data.gambar}, '  WHERE id = ${req.params.id}`;
+    const querySql = `SELECT datakatalog SET namaKatalog = '${data.namaKatalog}', berat ='${data.berat}',
+                    kalori ='${data.kalori}',gambar='${data.gambar}, '  WHERE idKatalog = ${req.params.idKatalog}`;
 
     // jalankan query
     koneksi.query(querySql, (err, rows, field) => {
@@ -179,13 +179,13 @@ app.get('/katalog_data/:id', (req, res) => {
 });
 
 // update katalog
-app.put('/katalog_data/:id', (req, res) => {
+app.put('/datakatalog/:idKatalog', (req, res) => {
     // buat variabel penampung data dan query sql
 
     const data = { ...req.body};
-    const querySearch = `SELECT * FROM katalog_data WHERE id = ${req.params.id}`;
-    const queryUpdate = `UPDATE katalog_data SET nama_mamin = '${data.nama_mamin}', berat ='${data.berat}',
-                        kalori ='${data.kalori}', gambar='${data.gambar},' WHERE id = ${req.params.id}`;
+    const querySearch = `SELECT * FROM datakatalog WHERE idKatalog = ${req.params.idKatalog}`;
+    const queryUpdate = `UPDATE datakatalog SET nama_mamin = '${data.nama_mamin}', berat ='${data.berat}',
+                        kalori ='${data.kalori}', gambar='${data.gambar},' WHERE idKatalog = ${req.params.idKatalog}`;
 
     // jalankan query untuk melakukan pencarian data
     koneksi.query(querySearch, req.params.id, (err, rows, field) => {
@@ -196,7 +196,7 @@ app.put('/katalog_data/:id', (req, res) => {
         //jika id yang dimasukkan sesuai dengan data yang ada di db
         if (rows.length){
             // jalankan query update
-            koneksi.query(queryUpdate, [data, req.params.id], (err ,rows, field) => {
+            koneksi.query(queryUpdate, [data, req.params.idKatalog], (err ,rows, field) => {
                 //error handling
                 if (err){
                     return res.status(500).json({message: 'Ada kesalahan', error: err});
@@ -211,13 +211,13 @@ app.put('/katalog_data/:id', (req, res) => {
 });
 
 // delete katalog
-app.delete('/katalog_data/:id', (req, res) => {
+app.delete('/datakatalog/:idKatalog', (req, res) => {
     // buat query sql untuk mencari data dan hapus
-    const querySearch = `SELECT * FROM katalog_data WHERE id = ${req.params.id}`;
-    const queryDelete = `DELETE FROM katalog_data WHERE id = ${req.params.id}`;
+    const querySearch = `SELECT * FROM datakatalog WHERE idKatalog = ${req.params.idKatalog}`;
+    const queryDelete = `DELETE FROM datakatalog WHERE idKatalog = ${req.params.idKatalog}`;
 
     // jalankan query untuk melakukan pencarian data
-    koneksi.query(querySearch, req.params.id, (err, rows, field) => {
+    koneksi.query(querySearch, req.params.idKatalog, (err, rows, field) => {
         // error handling
         if (err) {
             return res.status(500).json({ message: 'Ada kesalahan', error: err });
@@ -350,7 +350,8 @@ app.delete('/riwayat/:id', (req, res) => {
 app.post('/posting',upload.single('posting'), (req, res) => {
     // buat variabel penampung data dan query sql
     const data = { ...req.body };
-    const querySql = `INSERT INTO posting (id, nama_user, konten, posting) VALUES ('${data.id}, ${data.nama_user}', '${data.konten}, '${req.file.filename}'')`;
+    const querySql = `INSERT INTO posting (id, namaUser, konten, posting) 
+                    VALUES ('${data.id}, ${data.namaUser}', '${data.konten}, '${req.file.filename}'')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {

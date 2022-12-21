@@ -7,6 +7,7 @@ const koneksi = mysql.createConnection({
     user : 'root',
     password : '',
     database : 'kalorin',
+    port        : '3300',
     multipleStatements : true
 });
 
