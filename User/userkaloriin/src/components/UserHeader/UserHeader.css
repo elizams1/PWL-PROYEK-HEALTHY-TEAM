@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @media screen and (max-width: 500px) {
   .the-header{ 
     height: 100px !important;
@@ -75,4 +76,83 @@
 .tambah-postingan-drawer{
   display: flex;
   gap : 10px;
+=======
+@media screen and (max-width: 500px) {
+  .the-header{ 
+    height: 100px !important;
+    padding: 20px !important;
+  }
+  .logo{ 
+    width: 150px !important;
+  }
+  .the-menu-1 {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .the-drawer-1 {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+    }
+  .logo {
+    width: 200px;
+  }
+  .the-menu-1{
+    display: none !important;
+  }
+}
+.the-header{ 
+  padding: 50px;
+  background-color: #155D27;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0px 0px 20px 20px;
+}
+.the-drawer-1 {
+  display: none;
+}
+.the-menu-1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+.type-menu{ 
+  color: #fff;
+  font-size: 26px;
+}
+.type-drawer{
+  font-size: 24px;
+  color: #000;
+}
+.button-plus{
+  width: 40px;
+}
+.profil-photo{
+  width: 50px;
+  border-radius: 100px;
+}
+.drawer-header{
+  display: flex;
+  gap : 10px;
+  align-items: center;
+}
+.menu-drawer{
+  padding: 5px 10px;
+  background-color: #CEE4D4;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.tambah-postingan-drawer{
+  display: flex;
+  gap : 10px;
+>>>>>>> a14033f5d99fb3bbefa57fc135b1e1d182b5ca35
 }

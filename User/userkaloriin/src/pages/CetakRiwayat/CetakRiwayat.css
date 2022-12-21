@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @media screen and (max-width: 500px) {}
 
 @media screen and (max-width: 1400px) {}
@@ -11,4 +12,19 @@
   height: 1000px;
   display: flex;
   align-items: center;
+=======
+@media screen and (max-width: 500px) {}
+
+@media screen and (max-width: 1400px) {}
+
+.cetak-riwayat {
+  width: 100%;
+  margin-bottom: 50px;
+}
+.the-file-document {
+  width: 100%;
+  height: 1000px;
+  display: flex;
+  align-items: center;
+>>>>>>> a14033f5d99fb3bbefa57fc135b1e1d182b5ca35
 }

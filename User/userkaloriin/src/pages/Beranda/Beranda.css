@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @media screen and (min-width: 345px) {
   .search-fitur{
     width: 180px;
@@ -84,4 +85,92 @@
   justify-content: space-between;
   padding: 0px 15px;
   margin-bottom: 15px;
+=======
+@media screen and (min-width: 345px) {
+  .search-fitur{
+    width: 180px;
+    gap: 5px;
+  }
+  .the-card-detail{
+    font-size: 18px;
+  }
+  .the-card-name{
+    font-size: 22px;
+  }
+  .card-item{
+    width: 150px;
+  }
+  .catalog-beranda{
+    gap: 10px;
+  }
+  .card-img-set {
+    height: 150px;
+    width: 150px;
+  }
+}
+@media screen and (min-width: 550px){
+  .card-item {
+    width: 200px;
+  }
+  .catalog-beranda {
+    gap: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .catalog-beranda {
+    gap: 30px;
+  }
+  .card-item {
+    width: 250px;
+  }
+  .card-img-set {
+    height: 200px;
+    width: 250px;
+  }
+  .the-card-name {
+    font-size: 24px;
+  }
+
+}
+
+.beranda{
+  width: 100%;
+}
+.top-beranda{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.search-fitur{
+  display: flex;
+  gap: 10px;
+}
+.catalog-beranda{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card-item{
+  border: 1px solid #155D27;
+  border-radius: 10px;
+}
+.card-img-set{
+  border-radius: 10px 10px 0px 0px;
+}
+.card-name{
+  padding : 0px 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.the-card-name{
+  color:#155D27;
+  font-weight: 500;
+}
+.card-detail{
+  display : flex;
+  justify-content: space-between;
+  padding: 0px 15px;
+  margin-bottom: 15px;
+>>>>>>> a14033f5d99fb3bbefa57fc135b1e1d182b5ca35
 }
