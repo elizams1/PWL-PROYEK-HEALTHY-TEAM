@@ -1,14 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const koneksi = require('./config/database');
-const app =express ();
+const app = express();
 const multer = require('multer');
 const path = require('path');
+var cors = require('cors');
 
+const imageUploadPath = 'C:\Users\HP\Downloads\PWL-PROYEK-HEALTHY-TEAM\Back-End\public\gambar'
 // SET STORAGE
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'public/gambar')
+      cb(null, imageUploadPath)
     },
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname));
@@ -19,8 +21,9 @@ const upload = multer({ storage: storage });
 const PORT = process.env.PORT || 3306;
 
 // set body parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended:true}));
+app.use(cors({origin: "*"}))
 
 
 
@@ -125,12 +128,12 @@ app.delete('/user/:idUser', (req, res) => {
 
 // --KATALOG--
 // Create katalog
-app.post('/datakatalog',upload.single('gambar'), (req, res) => {
+app.post('/datakatalog',upload.array('gambar'), (req, res) => {
     // buat variabel penampung data dan query sql
     console.log(req.file.filename)
     const data = { ...req.body };
-    const querySql = `INSERT INTO datakatalog (id, namaKatalog, berat, kalori, gambar) 
-                    VALUES ('${data.idKatalog}', '${data.namaKatalog}', '${data.berat}', '${data.kalori}', '${req.file.filename}')`;
+    const querySql = `INSERT INTO datakatalog ( namaKatalog, berat, kalori, gambar) 
+                    VALUES ( '${data.namaKatalog}', '${data.berat}', '${data.kalori}', '${req.file.filename}')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {
@@ -380,6 +383,14 @@ app.get('/posting', (req, res) => {
         res.status(200).json({ success: true, data: rows });
     });
 });
+
+//download gambar
+app.get('/api/gambar/:gambar', (req, res) =>{
+   var a =  path.join(__dirname, `public/gambar/${req.params.gambar}`)
+   return res.download(a);
+}
+
+)
 
 // delete posting
 app.delete('/api/posting/:id', (req, res) => {
