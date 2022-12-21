@@ -1,0 +1,29 @@
+@media screen and (max-width: 500px) {
+  
+}
+
+@media screen and (max-width: 1400px) {
+
+}
+
+.riwayat{
+  width: 100%;
+}
+.top-riwayat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.left-button, .tambah-button, .cetak-button{
+  display: flex;
+  gap: 10px;
+}
+.button-action{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.text-numeric-table {
+  text-align: center !important;
+}

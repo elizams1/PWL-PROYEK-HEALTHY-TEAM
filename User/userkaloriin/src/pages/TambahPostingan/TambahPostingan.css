@@ -1,0 +1,27 @@
+@media screen and (max-width: 500px) {
+  
+}
+
+@media screen and (max-width: 1400px) {
+
+}
+.tambah-postingan {
+  width: 100%;
+}
+.upload-postingan{
+  margin-top: 50px;
+}
+.caption-postingan{
+  margin-top: 20px;
+}
+.button-add-postingan{
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.type-add-postingan {
+  padding: 5px 70px;
+  background-color: #155D27;
+  color: #fff;
+  border-radius: 10px;
+}

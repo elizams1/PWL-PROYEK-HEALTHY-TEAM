@@ -1,0 +1,23 @@
+@media screen and (max-width: 500px) {}
+
+@media screen and (max-width: 1400px) {}
+
+.tambah-riwayat {
+  width: 100%;
+  margin-bottom: 50px;
+}
+.top-breadcumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.the-label-riwayat {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.the-input-riwayat {
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
