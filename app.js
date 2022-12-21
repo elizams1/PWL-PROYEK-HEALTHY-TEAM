@@ -22,14 +22,7 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-// upload gambar
-app.post('/gambar', upload.single('gambar'),(req, res) =>{
-    res.send('berhasil')
-})
-// upload gambar
-app.post('/gambar1', upload.single('posting'),(req, res) =>{
-    res.send('berhasil')
-})
+
 
 // --USER--
 // Create User
@@ -132,11 +125,12 @@ app.delete('/user/:id', (req, res) => {
 
 // --KATALOG--
 // Create katalog
-app.post('/katalog_data', (req, res) => {
+app.post('/katalog_data',upload.single('gambar'), (req, res) => {
     // buat variabel penampung data dan query sql
+    console.log(req.file.filename)
     const data = { ...req.body };
     const querySql = `INSERT INTO katalog_data (id, nama_mamin, berat, kalori, gambar) 
-                    VALUES ('${data.id}', '${data.nama_mamin}', '${data.berat}', '${data.kalori}', '${data.gambar}')`;
+                    VALUES ('${data.id}', '${data.nama_mamin}', '${data.berat}', '${data.kalori}', '${req.file.filename}')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {
@@ -353,10 +347,10 @@ app.delete('/riwayat/:id', (req, res) => {
 
 // --POSTING--
 // Create posting
-app.post('/posting', (req, res) => {
+app.post('/posting',upload.single('posting'), (req, res) => {
     // buat variabel penampung data dan query sql
     const data = { ...req.body };
-    const querySql = `INSERT INTO posting (id, nama_user, konten) VALUES ('${data.id}, ${data.nama_user}', '${data.konten}')`;
+    const querySql = `INSERT INTO posting (id, nama_user, konten, posting) VALUES ('${data.id}, ${data.nama_user}', '${data.konten}, '${req.file.filename}'')`;
 
     // jalankan query
     koneksi.query(querySql, data, (err, rows, field) => {
